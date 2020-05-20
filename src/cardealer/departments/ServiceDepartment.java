@@ -1,4 +1,4 @@
-package dealership.departments;
+package cardealer.departments;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -13,4 +13,5 @@ public class ServiceDepartment extends Department {
     public boolean isOpenToday(LocalDateTime day) {
         return !day.getDayOfWeek().equals(DayOfWeek.SUNDAY);
     }
+
 }

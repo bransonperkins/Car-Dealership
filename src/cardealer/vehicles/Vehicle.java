@@ -1,11 +1,13 @@
-package dealership.vehicles;
+package cardealer.vehicles;
 
 public class Vehicle {
     private String VIN, make, model, color;
     private double wholesaleCost, retailPrice;
     private int modelYear;
+    private VehicleClassification vehicleClass;
 
-    public Vehicle(String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model, String color) {
+    public Vehicle(String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model,
+                   String color, VehicleClassification vehicleClass) {
         this.VIN = VIN;
         this.wholesaleCost = wholesaleCost;
         this.retailPrice = retailPrice;
@@ -13,6 +15,7 @@ public class Vehicle {
         this.make = make;
         this.model = model;
         this.color = color;
+        this.vehicleClass = vehicleClass;
     }
 
     public String getVIN() {
@@ -71,9 +74,17 @@ public class Vehicle {
         this.modelYear = modelYear;
     }
 
+    public VehicleClassification getVehicleClass() {
+        return vehicleClass;
+    }
+
+    public void setVehicleClass(VehicleClassification vehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
+
     @Override
     public String toString() {
-        return this.getModelYear() + " " + this.getMake() + " " + this.getModel(); // ex: 2018 Kia Sorrento
+        return this.getModelYear() + " " + this.getMake() + " " + this.getModel();
     }
 
     public double getTargetMargin() {

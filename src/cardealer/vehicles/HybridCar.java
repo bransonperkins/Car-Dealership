@@ -1,5 +1,7 @@
 package cardealer.vehicles;
 
+import cardealer.enums.VehicleClassification;
+
 public class HybridCar extends Car {
 
     private int batteryLife, MPG;

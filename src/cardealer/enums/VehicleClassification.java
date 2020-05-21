@@ -1,4 +1,4 @@
-package cardealer.vehicles;
+package cardealer.enums;
 
 // Our own custom enumeration
 public enum VehicleClassification {

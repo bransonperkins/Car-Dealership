@@ -1,5 +1,7 @@
 package cardealer.vehicles;
 
+import cardealer.enums.VehicleClassification;
+
 public class Vehicle {
     private String VIN, make, model, color;
     private double wholesaleCost, retailPrice;
@@ -8,14 +10,15 @@ public class Vehicle {
 
     public Vehicle(String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model,
                    String color, VehicleClassification vehicleClass) {
-        this.VIN = VIN;
-        this.wholesaleCost = wholesaleCost;
-        this.retailPrice = retailPrice;
-        this.modelYear = modelYear;
-        this.make = make;
-        this.model = model;
-        this.color = color;
-        this.vehicleClass = vehicleClass;
+        // use setters to set values of the parameters
+        setVIN(VIN);
+        setWholesaleCost(wholesaleCost);
+        setRetailPrice(retailPrice);
+        setModelYear(modelYear);
+        setMake(make);
+        setModel(model);
+        setColor(color);
+        setVehicleClass(vehicleClass);
     }
 
     public String getVIN() {
@@ -84,11 +87,38 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return this.getModelYear() + " " + this.getMake() + " " + this.getModel();
+        return this.getModelYear() + " " + this.getMake() + " " + this.getModel() + ", " + this.getVehicleClass();
     }
 
     public double getTargetMargin() {
         return this.retailPrice + this.wholesaleCost;
+    }
+
+    public void printVehicleType() {
+        String type = "NOT SET";
+        switch (this.vehicleClass) {
+            case NEW:
+                type = "New Car";
+                break;
+            case USED:
+                type = "Used Car";
+                break;
+            case OFF_LEASE:
+                type = "Leased Car";
+                break;
+            case SHUTTLE:
+                type = "Dealer Shuttle";
+                break;
+            case LOANER:
+                type = "Dealer Service Loaner";
+                break;
+            case PARTS_RUNNER:
+                type = "Parts Runner";
+                break;
+            default:
+                break;
+        }
+        System.out.println("Car type is: " + type);
     }
 
 }

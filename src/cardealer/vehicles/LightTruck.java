@@ -1,5 +1,7 @@
 package cardealer.vehicles;
 
+import cardealer.enums.VehicleClassification;
+
 public class LightTruck extends Vehicle {
 
     private long towingCapacity, truckWeight, grossCombinedWeight;
@@ -33,7 +35,7 @@ public class LightTruck extends Vehicle {
         this.truckWeight = truckWeight;
     }
 
-    public boolean isIs4wd() {
+    public boolean getIs4wd() {
         return is4wd;
     }
 
@@ -41,13 +43,18 @@ public class LightTruck extends Vehicle {
         this.is4wd = is4wd;
     }
 
-    public LightTruck (String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model,
+    public LightTruck(String VIN, double wholesaleCost, double retailPrice, int modelYear, String make, String model,
                       String color, long towingCapacity, long truckWeight, boolean is4wd, VehicleClassification vehicleClass) {
         super(VIN, wholesaleCost, retailPrice, modelYear, make, model, color, vehicleClass);
-        this.towingCapacity = towingCapacity;
-        this.truckWeight = truckWeight;
-        this.is4wd = is4wd;
-        this.grossCombinedWeight = this.towingCapacity + this.truckWeight;
+        setTowingCapacity(towingCapacity);
+        setTruckWeight(truckWeight);
+        setIs4wd(is4wd);
+        setGrossCombinedWeight(this.towingCapacity + this.truckWeight);
+
+        // Create new TransferCase object if LightTruck is 4WD and store object in Variable xferCase
+        if (this.is4wd) {
+            this.xferCase = new TransferCase();
+        }
     }
 
     @Override
@@ -59,5 +66,23 @@ public class LightTruck extends Vehicle {
         }
         return str;
     }
+
+    public class TransferCase {
+        private int numGears;
+
+        public int getNumGears() {
+            return numGears;
+        }
+
+        public void setNumGears(int numGears) {
+            this.numGears = numGears;
+        }
+
+        public TransferCase() {
+            setNumGears(4);
+        }
+    }
+
+    public TransferCase xferCase;
 
 }
